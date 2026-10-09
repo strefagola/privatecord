@@ -1,0 +1,6 @@
+{
+  "firebase_service_account": "serviceAccount.json",
+  "bot_document_id": "WKLEJ_TOKEN_BOTA",
+  "poll_seconds": 2,
+  "server_id": "opcjonalnie"
+}
