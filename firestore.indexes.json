@@ -1,0 +1,19 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "botInstallations",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "serverId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "enabled",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f1117">
+<title>PrivateCord</title>
+<link rel="icon" type="image/png" href="logo.png?v=47">
+<link rel="stylesheet" href="styles.css?v=47">
+</head>
+<body>
+<div id="toastLayer" class="toast-layer"></div>
+<section id="authView" class="auth-screen">
+  <div class="auth-glow glow-a"></div><div class="auth-glow glow-b"></div>
+  <div class="auth-card">
+    <div class="brand-mark"><img src="logo.png?v=47" alt="PrivateCord" width="52" height="52"></div>
+    <div class="brand-name">PrivateCord</div>
+    
+    <div class="auth-tabs auth-tabs-single"><button id="loginTab" class="auth-tab active">Zaloguj</button></div>
+    <div id="loginPane" class="auth-pane">
+      <h1>Witaj ponownie</h1><p class="muted">Zaloguj się do swojego konta PrivateCord.</p>
+      <label>Email<input id="loginEmail" type="email" autocomplete="email"></label>
+      <label>Hasło<div class="input-with-action"><input id="loginPass" type="password" autocomplete="current-password"><button id="toggleLoginPass" type="button">Pokaż</button></div></label>
+      <button id="loginBtn" class="btn primary wide">Zaloguj się</button>
+    </div>
+    <div id="authStatus" class="auth-status"></div>
+  </div>
+</section>
+
+<section id="appView" class="app hidden">
+  <aside class="rail">
+    <button id="homeBtn" class="rail-item active home-logo-button" title="Strona główna"><img src="logo.png?v=47" alt="Strona główna" class="home-logo"></button>
+    <div class="rail-divider"></div>
+    <div id="serverList" class="server-rail-list"></div>
+    <button id="addServerBtn" class="rail-item add" title="Dodaj serwer"><span class="ico">+</span></button>
+    <button id="discoverBtn" class="rail-item" title="Odkrywaj"><span class="ico">◎</span></button>
+  </aside>
+
+  <aside id="side" class="side">
+    <div id="homeSidebar" class="sidebar-panel">
+      <div class="sidebar-title-row"><b>Rozmowy</b><button id="sidebarMore" class="icon-btn">⋯</button></div>
+      <nav class="nav-stack">
+        <button class="nav-row active" data-page="home"><span>⌂</span>Strona główna</button>
+        <button class="nav-row" data-page="friends"><span>♧</span>Znajomi <span id="friendCount" class="count-dot hidden">0</span></button>
+        <button class="nav-row" data-page="discover"><span>◎</span>Odkrywaj</button>
+        <button class="nav-row" data-page="bots"><span>◈</span>Boty</button>
+        <button class="nav-row" data-page="settings"><span>⚙</span>Ustawienia</button>
+      </nav>
+      <div class="section-title">WIADOMOŚCI BEZPOŚREDNIE <span id="dmUnreadTotal" class="dm-total-unread hidden">0</span><button id="newDmBtn" class="mini">+</button></div>
+      <div id="dmList" class="dm-list"></div>
+    </div>
+    <div id="serverSidebar" class="sidebar-panel hidden">
+      <div id="serverHead" class="server-head">
+        <div id="serverBanner" class="server-banner"><div id="serverBannerImage"></div><div class="server-banner-shade"></div><div class="server-banner-top"><span id="serverHeaderIcon" class="server-header-icon"><span>P</span></span></div><div class="server-banner-text"><b id="serverNameText">Serwer</b><span id="serverDescText"></span></div></div>
+        <button id="serverHeadMenu" class="server-head-menu">⌄</button>
+      </div>
+      <div class="channel-tree-head"><span>KANAŁY</span><div><button id="addCategoryBtn" class="mini" title="Dodaj kategorię">+</button><button id="serverMoreBtn" class="mini" title="Opcje serwera">⋯</button></div></div>
+      <div id="channelTree" class="channel-tree"></div>
+    </div>
+    <div class="user-bar">
+      <button id="myProfileBtn" class="user-bar-main"><span id="myAvatar" class="avatar avatar-md"></span><span class="user-copy"><b id="myName">—</b><small id="myTag">#0000</small></span></button>
+      <button id="statusBtn" class="status-button" title="Status"><span id="statusGlyph">●</span></button>
+      <button id="settingsBtn" class="icon-btn" title="Ustawienia">⚙</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="top-left"><button id="mobileSideBtn" class="mobile-only icon-btn">☰</button><span id="topIcon">⌂</span><div><b id="topTitle">Strona główna</b><small id="topSubtitle"></small></div></div>
+      <div class="top-search"><button id="globalSearchBtn" class="search-field"><span>⌕</span><span>Wyszukaj osoby, wiadomości i serwery</span><kbd>Ctrl K</kbd></button></div>
+      <div class="top-actions"><button id="membersBtn" class="icon-btn" title="Członkowie">♙</button><button id="pinnedBtn" class="icon-btn" title="Przypięte">⌑</button><button id="shortcutsBtn" class="icon-btn" title="Skróty klawiszowe">⌨</button></div>
+    </header>
+    <section id="mainContent" class="main-content"></section>
+  </main>
+
+  <aside id="membersPane" class="members-pane hidden"><div class="members-header"><div><b>Członkowie</b><small id="memberSummary" class="muted">Lista serwera</small></div><button id="closeMembers" class="icon-btn">×</button></div><div class="member-search-wrap"><span>⌕</span><input id="memberSearch" placeholder="Szukaj członków…" autocomplete="off"></div><div id="membersList" class="members-list"></div></aside>
+</section>
+
+<div id="profileLayer" class="overlay-layer hidden"></div>
+<div id="modalLayer" class="overlay-layer hidden"></div>
+<div id="contextMenu" class="context-menu hidden"></div>
+<script type="module" src="privatecord.js?v=47"></script>
+<script>
+document.documentElement.dataset.privatecordVersion='47';
+</script>
+</body>
+</html>
